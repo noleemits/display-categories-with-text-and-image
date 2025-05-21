@@ -1,0 +1,100 @@
+A lightweight and flexible WordPress shortcode to display categories (or any taxonomy terms) with their ACF image, title, and description — styled with a responsive flex layout. Works with default posts and custom post types.
+
+Features
+
+Displays ACF image (category_image) for each taxonomy term
+
+Supports multiple taxonomies
+
+Works with custom post types
+
+Graceful fallback if ACF is inactive
+
+Namespaced functions and CSS (saxon_) to avoid conflicts
+
+Simple flex layout with clean HTML for easy customization
+
+Requirements
+
+WordPress 5.0+
+
+Advanced Custom Fields (ACF)
+
+Custom field named: category_image (type: Image) attached to the desired taxonomy
+
+Installation
+
+Add the code from saxon-category-shortcode.php to:
+
+Your functions.php, or
+
+A custom plugin (recommended for portability)
+
+Create a custom field in ACF:
+
+Field Name: category_image
+
+Field Type: Image
+
+Location Rule: Taxonomy is equal to category (or any custom taxonomy)
+
+(Optional) Add the CSS snippet from saxon-category-style.css to your theme or the WordPress Customizer.
+
+Shortcode Usage
+
+Default blog categories:
+
+[saxon_category_list]
+
+Custom Post Type (auto-detects taxonomy):
+
+[saxon_category_list post_type="portfolio"]
+
+Specific Taxonomies:
+
+[saxon_category_list taxonomy="category,project_category"]
+
+Styling (CSS)
+
+.saxon-category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.saxon-category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    text-decoration: none;
+    background: #f8f8f8;
+    padding: 15px;
+    border-radius: 8px;
+    transition: box-shadow 0.3s;
+}
+
+.saxon-category-item:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.saxon-category-image {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.saxon-category-title {
+    font-size: 1.1em;
+    margin: 10px 0 5px;
+    text-align: center;
+}
+
+.saxon-category-description {
+    font-size: 0.9em;
+    color: #555;
+    text-align: center;
+}
+
+You can scope styles per taxonomy using classes like .saxon-tax-project_category
